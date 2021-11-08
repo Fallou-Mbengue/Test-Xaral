@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+{% block title %}
+	Create User
+{% endblock %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+
+{% block body %}
+	<!-- ======= Services Section ======= -->
+	<section id="services" class="services">
+		<div class="container">
+
+			<div class="section-title" data-aos="fade-up">
+				<h2>Création Costumer Manager</h2>
+				<p>Veuillez Remplir les champs suivant</p>
+			</div>
+
+		</div>
+	</section>
+	<!-- End Services Section -->
+
+	<!-- Formulaire -->
+
+		<div class="container d-flex justify-content-center intro-single mt-5 mb-5">
+			<div class="card col-7">
+				<div class="card-header text-center">
+					<h3>Costumer Manager</h3>
+				</div>
+				{{ form(form) }}
+			</div>
+		</div>
+	
+		<!-- end formulaire -->
+{% endblock %}

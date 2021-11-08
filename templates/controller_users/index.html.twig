@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ControllerUsersController!
+{% endblock %}
+
+{% block body %}
+
+	<!-- ======= Team Section ======= -->
+	<section id="team" class="team">
+		<div class="container">
+
+			<div class="section-title" data-aos="fade-up">
+				<h2>Costumer Manager List</h2>
+				<p>Voici les différentes Costumer Manager vous pouvez faire les opérations de modification et de suppression</p>
+			</div>
+             <div class="row">
+             {% for costumer in costumers %}
+				<div class="card mb-3" style="width: 23rem; margin-left: 10px;">
+				<h3 class="card-header">
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;"></font>
+					</font>
+				</h3>
+				<div class="card-body">
+					<h5 class="card-title text-center">
+						<font style="vertical-align: inherit;">
+							<font style="vertical-align: inherit;"> Information Costumer</font>
+						</font>
+					</h5>
+				</div>
+				<img src="{{asset('uploads/images/'~ costumer.image)}}" class="card-img-top" alt="...">
+				<div class="card-body">
+					<p class="card-text">
+						<font style="vertical-align: inherit;">
+							<font style="vertical-align: inherit;"></font>
+						</font>
+					</p>
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item">
+							<font style="vertical-align: inherit;">
+								<font style="vertical-align: inherit;"> Prénom :  {{costumer.prenom}}</font>
+							</font>
+						</li>
+                        <li class="list-group-item">
+							<font style="vertical-align: inherit;">
+								<font style="vertical-align: inherit;"> Nom :  {{costumer.nom}}</font>
+							</font>
+						</li>
+                        <li class="list-group-item">
+							<font style="vertical-align: inherit;">
+								<font style="vertical-align: inherit;"> Location :  {{costumer.location}}</font>
+							</font>
+						</li>
+						<li class="list-group-item">
+							<font style="vertical-align: inherit;">
+								<font style="vertical-align: inherit;"> Téléphone :  {{costumer.telephone}}</font>
+							</font>
+						</li>
+						<li class="list-group-item">
+							<font style="vertical-align: inherit;">
+								<font style="vertical-align: inherit;"> Contact : {{costumer.contact}}</font>
+							</font>
+						</li>
+					</ul>
+                    <div class="text-center">
+                    <a href="{{path('edit_users',{'id': costumer.id})}}" class="btn btn-success">Modifier</a>
+                    <a href="{{path('delete_users',{'id': costumer.id})}}" class="btn btn-danger">Suprimer</a>
+                    </div>
+					
+					
+				</div>
+
+			</div>
+
+			{% endfor %}
+             </div>
+		</div>
+
+	</div>
+</section>
+<!-- End Team Section -->{% endblock %}
