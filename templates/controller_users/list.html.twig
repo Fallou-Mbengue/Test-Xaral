@@ -1,0 +1,88 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	List Users
+{% endblock %}
+
+{% block body %}
+	<html>
+		<head>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<title>tableau</title>
+			<style type="text/css">
+				.bloc {
+					padding: 35px;
+					box-shadow: 2px 2px 3px 2px gray;
+					border-radius: 5px;
+
+				}
+			</style>
+		</head>
+		<body>
+			<div class="container mt-5" style="color:black;">
+				<h2>Users Table UI</h2>
+			</div>
+			<section style="margin-left: 120px; text-align:center;">
+				{% if costumers is not empty %}
+					<table cellpadding="30px" width="1000px" margin-left="20px">
+						<thead style="color:black;">
+							<tr>
+								<th>User</th>
+								<th>Status</th>
+								<th>Nom</th>
+								<th>Location</th>
+								<th>Phone</th>
+								<th>Contact</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for costumer in costumers %}
+								<tr class="bloc">
+									<td>{{costumer.id}}</td>
+									{% if costumer.isavalaible == true %}
+										<td>
+											<i class="fas fa-toggle-on"></i>
+										</td>
+									{% else %}
+										<td>
+											<i class="fas fa-toggle-on"></i>
+										</td>
+									{% endif %}
+									<td>{{costumer.nom}}</td>
+									<td>{{costumer.location}}</td>
+									<td>{{costumer.telephone}}</td>
+									<td>
+										<button type="button" class="btn btn-primary">{{costumer.contact}}</button>
+									</td>
+									<td>
+										<div class="dropdown">
+											<a href="#" class="badge badge-light" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												<box-icon name='dots-vertical-rounded'></box-icon>
+											</a>
+											<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+												<a class="dropdown-item" href="{{path('edit_users',{'id': costumer.id})}}" style="color:black;">
+													<box-icon name='edit-alt' color='black'></box-icon>
+													Edit</a>
+												<a class="dropdown-item" href="{{path('delete_users',{'id': costumer.id})}}" style="color:red;">
+													<box-icon name='trash' color='red'></box-icon>
+													Delete</a>
+											</div>
+										</div>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				{% else %}
+					<p>No article fund</p>
+				{% endif %}
+
+
+			</section>
+		</body>
+	</html>
+
+
+{% endblock %}

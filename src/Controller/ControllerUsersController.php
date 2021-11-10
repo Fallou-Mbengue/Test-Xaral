@@ -96,7 +96,7 @@ class ControllerUsersController extends AbstractController
         $em->remove($uses);
         $em->flush();
 
-        return $this->redirectToRoute('controller_users');
+        return $this->redirectToRoute('list_user');
 
     }
 
@@ -160,5 +160,14 @@ class ControllerUsersController extends AbstractController
             'form' => $form->createView(),
         ]);
     
+    }
+
+    /**
+     * @Route("/list/users", name="list_user")
+     */
+    public function ListUsers(CostumerRepository $constumerRepository): Response{
+        return $this->render('controller_users/list.html.twig', [
+            'costumers' => $constumerRepository->findAll(),
+        ]);
     }
 }
